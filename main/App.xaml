@@ -1,0 +1,55 @@
+﻿<Application x:Class="main.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:main"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style BasedOn="{StaticResource MaterialDesignFloatingActionLightButton}" x:Key="_MaterialDesignFloatingActionLightButton" TargetType="Button">
+                <Setter Property="Background" Value="#F5EB67"/>
+                <Setter Property="Margin" Value="4"/>
+            </Style>
+            
+            <Style TargetType="Rectangle">
+                <Setter Property="Fill" Value="#007ACC" />
+                <!-- Example fill color -->
+                <Setter Property="Stroke" Value="#E5E5E5" />
+                <!-- Example stroke color -->
+                <Setter Property="StrokeThickness" Value="2" />
+                <!-- Example stroke thickness -->
+                <Setter Property="RadiusX" Value="5" />
+                <!-- Example horizontal corner radius -->
+                <Setter Property="RadiusY" Value="5" />
+                <!-- Example vertical corner radius -->
+            </Style>
+            
+            <Style BasedOn="{StaticResource MaterialDesignOutlinedTextBox}" TargetType="TextBox">
+                <Setter Property="Margin" Value="4"/>
+            </Style>
+            
+            <Style BasedOn="{StaticResource MaterialDesignFloatingActionAccentButton}" x:Key="_MaterialDesignFloatingActionAccentButton" TargetType="Button">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="Background" Value="#F5EB67"/>
+            </Style>
+            
+            <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                <Setter Property="Background" Value="#FFA15C"/>
+                <Setter Property="Margin" Value="6"/>
+            </Style>
+
+            <Style BasedOn="{StaticResource MaterialDesignCalendarPortrait}" TargetType="Calendar">
+                <!--<Setter Property="Foreground" Value="#FFA15C"/>-->
+                <Setter Property="Margin" Value="-2"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

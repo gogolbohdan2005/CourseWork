@@ -1,0 +1,138 @@
+﻿<Window x:Class="main.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        mc:Ignorable="d"
+        Title="View" Height="450" Width="800">
+    <Grid Background="#284359" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock 
+                       HorizontalAlignment="Center"
+                       FontFamily = "Montserrat"
+                       Text="Note"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0"/>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Button
+                    Margin="0 10 0 0"
+                    Foreground="#284359"
+                    FontFamily = "Montserrat Bold"
+                    FontSize="15"
+                    Height="25"
+                    Width="25"
+                    Click="Button_Out">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="ButtonBorder"
+                               CornerRadius="100"
+                               Background="#F0F5FE">
+                            <ContentPresenter x:Name="ButtonContentPresenter"
+                                  Content="X"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#2f506b"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="dynamicTitle"
+                       IsReadOnly="True"
+                       BorderBrush="Transparent"
+                       BorderThickness="0"
+                       FocusVisualStyle="{x:Null}"
+                       Background="Transparent"
+                       TextWrapping="Wrap"
+                       Margin="20 20 20 5"/>
+            <Border 
+                    Margin="20 0 20 0"
+                    Background="#F0F5FE"
+                    MinHeight="270"
+                    Height="Auto">
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="dynamicDescr"
+                             Grid.Row="0"
+                             BorderBrush="Transparent"
+                             BorderThickness="0"
+                             FocusVisualStyle="{x:Null}"
+                             Background="#F0F5FE"
+                             TextWrapping="Wrap"
+                             FontFamily="Montserrat"
+                             FontSize="14"
+                             Foreground="#284359"
+                             Margin="5 5 5 0"
+                             IsReadOnly="True"/>
+                    <TextBlock x:Name="dynamicDate"
+                               Grid.Row="1"
+                               Margin="5 0 5 0"
+                               FontFamily="Montserrat"
+                               FontSize="14"
+                               Foreground="#284359"
+                               HorizontalAlignment="Left"/>
+                    <Button Content="Edit" 
+                            Grid.Row="1"
+                            Foreground="#284359"
+                            HorizontalAlignment="Right"
+                            Margin="20 0 20 0"
+                            Click="Button_Edit">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="delete"
+                            Content="Delete" 
+                            Grid.Row="1"
+                            Foreground="#284359"
+                            HorizontalAlignment="Right"
+                            Margin="20 0 60 0"
+                            Visibility="Hidden"
+                            Click="Button_Delete">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="save"
+                            Content="Save" 
+                            Grid.Row="1"
+                            Foreground="#284359"
+                            HorizontalAlignment="Right"
+                            Margin="20 0 120 0"
+                            Visibility="Hidden"
+                            Click="Button_Save">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

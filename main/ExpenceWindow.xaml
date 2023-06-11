@@ -1,0 +1,166 @@
+﻿<!--
+      
+ - Make checking for right input
+ - Make better combo box positioning
+ - Make histogram componing
+ - Then make ability to add and read from JSON file categories
+ ( estimately 4 days of work when studying is over OR in Carpatians
+ - END WORK TILL NEXT WEEK !! Priority to study matan :(
+ - Then PRIORITY TO MAKE dad`s labs
+ - OOP by myself using grapths and Python
+ - Last lab for Shpak in Thursday
+ - ALL TESTS IN THURSDAY 
+ - RGR TODAY AND TOMORROW
+    
+Технічне завдання: Контроль витрат - програма на WPF
+
+Опис завдання:
+Необхідно створити програму для контролю витрат, яка дозволить користувачеві вводити, 
+переглядати та аналізувати свої витрати. Програма повинна мати зручний інтерфейс, 
+що дозволяє користувачу вводити дані про витрати, переглядати їх та отримувати звіти на основі цих даних.
+-->
+    
+    <Window x:Class="main.ExpenceWindow"
+            
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        mc:Ignorable="d"
+        Title="ExpenceWindow" Height="480" Width="860" MinHeight="480" MinWidth="860"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="18"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:materialDesignConverters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="0">
+            <DockPanel Background="#88F7E2">
+                
+                <DockPanel>
+                    <Button 
+                        Style="{StaticResource _MaterialDesignFloatingActionLightButton}"
+                        DockPanel.Dock="Top" 
+                        VerticalAlignment="Top">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="PaperAddOutline"/>
+                    </Button>
+
+                    <DockPanel DockPanel.Dock="Top">
+                        <Button 
+                        Style="{StaticResource _MaterialDesignFloatingActionLightButton}"
+                        DockPanel.Dock="Top" 
+                        VerticalAlignment="Top"
+                        Click="CalendarButton_Click">
+                            <materialDesign:PackIcon Width="25" Height="25" Kind="Calendar"/>
+                        </Button>
+
+                        <Popup x:Name="CalendarPopup" StaysOpen="False">
+                            <Calendar SelectedDatesChanged="Calendar_SelectedDateChanged"/>
+                        </Popup>
+                    </DockPanel>
+
+                    <Button 
+                        Style="{StaticResource _MaterialDesignFloatingActionLightButton}"
+                        DockPanel.Dock="Top" 
+                        VerticalAlignment="Top"
+                        Click="Reload_Click">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="Reload"/>
+                    </Button>
+
+                    <!--<Button 
+                        Style="{StaticResource _MaterialDesignFloatingActionLightButton}"
+                        DockPanel.Dock="Top" 
+                        VerticalAlignment="Top"
+                        Click="AddNewCategory_Click">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="Add"/>
+                    </Button>-->
+                    
+                    <Button 
+                        Style="{StaticResource _MaterialDesignFloatingActionLightButton}"
+                        DockPanel.Dock="Top" 
+                        VerticalAlignment="Top"
+                        Click="Close_Click">
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="Close"/>
+                    </Button>
+
+                </DockPanel>
+                
+                <ListView
+                    SelectionChanged="ListView_SelectionChanged"
+                    x:Name="ExpensesListView"
+                    DockPanel.Dock="Top" 
+                    VerticalAlignment="Top">
+                    
+
+                    <!--NEW INFORMATION FROM DATABASE IS GOING TO BE ADDED HERE-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <!--BIND NAME WITH THIS TEXT BLOCK-->
+                                <TextBlock
+                                    Width="125"
+                                    Text="{Binding Name}" 
+                                    FontSize="20"
+                                    FontWeight="DemiBold"/>
+                                <!--ADDING BRACKETS BEFORE AND AFTER--> 
+                                <TextBlock
+                                    Width="125"
+                                    Text="{Binding Category, StringFormat=' ( {0} ) '}" 
+                                    VerticalAlignment="Bottom"
+                                    FontSize="14">
+                                </TextBlock>
+                                
+                                <!--ADDING ₴ SIGN IN THE END-->
+                                <TextBlock
+                                    Text="{Binding Price, StringFormat={}{0}₴}" 
+                                    FontSize="20"
+                                    Margin="20, 0, 0, 0">
+                                </TextBlock>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+                <DockPanel 
+                    x:Name="ExpensesBox"
+                    DockPanel.Dock="Top" 
+                    VerticalAlignment="Top">
+                    <!-- INFO ABOUT EXPENSES WILL BE ADDED HERE-->
+                </DockPanel>
+
+                <Button 
+                    Click="Add_Click" 
+                    DockPanel.Dock="Bottom" 
+                    VerticalAlignment="Bottom" 
+                    Content="Add">
+                </Button>
+                <Button 
+                    Click="AddWithMono_Click" 
+                    DockPanel.Dock="Bottom" 
+                    VerticalAlignment="Bottom" 
+                    Content="Mono">
+                </Button>
+
+            </DockPanel>
+        </ScrollViewer>
+
+        <DockPanel Background="#88F7E2" Grid.Row="0" Grid.Column="1">
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="StatisticsBox" >
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+    
+</Window>

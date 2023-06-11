@@ -1,0 +1,125 @@
+﻿<Window x:Class="main.Add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        mc:Ignorable="d"
+        Title="Add" Height="450" Width="800">
+    <Grid Background="#284359" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock 
+                       HorizontalAlignment="Center"
+                       FontFamily = "Montserrat"
+                       Text="Notes"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Button 
+                    Margin="0 10 0 0"
+                    Foreground="#284359"
+                    FontFamily = "Montserrat Bold"
+                    FontSize="20"
+                    Height="25"
+                    Width="25"
+                    Click="Button_Add">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="ButtonBorder"
+                               CornerRadius="100"
+                               Background="#F0F5FE">
+                            <ContentPresenter Content="+"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#2f506b"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Button 
+                    Margin="0 10 0 0"
+                    Foreground="#284359"
+                    FontFamily = "Montserrat Bold"
+                    FontSize="15"
+                    Height="25"
+                    Width="25"
+                    Click="Button_Out">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="ButtonBorder"
+                               CornerRadius="100"
+                               Background="#F0F5FE">
+                            <ContentPresenter x:Name="ButtonContentPresenter"
+                                  Content="X"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#2f506b"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock
+                       Text="Title"
+                       Margin="20 40 0 0"/>
+            <TextBox x:Name="title" 
+                     AcceptsReturn="True"
+                     Margin="20 5 20 5"
+                     Foreground="#284359"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     TextWrapping="Wrap">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                                Background="#F0F5FE">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <TextBlock 
+                       Text="Description"
+                       Margin="20 10 0 0"/>
+            <TextBox x:Name="descr"
+                     AcceptsReturn="True"
+                     Margin="20 5 20 5"
+                     Foreground="#284359"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     TextWrapping="Wrap" TextChanged="descr_TextChanged">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                                Background="#F0F5FE">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <StackPanel x:Name="dynamicError"/>
+            <StackPanel x:Name="dynamicComplete"/>
+        </StackPanel>
+    </Grid>
+</Window>
