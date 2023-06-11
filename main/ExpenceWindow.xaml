@@ -19,8 +19,9 @@
 переглядати та аналізувати свої витрати. Програма повинна мати зручний інтерфейс, 
 що дозволяє користувачу вводити дані про витрати, переглядати їх та отримувати звіти на основі цих даних.
 -->
-    
-    <Window x:Class="main.ExpenceWindow"
+<!-- Added comment-->
+
+<Window x:Class="main.ExpenceWindow"
             
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
