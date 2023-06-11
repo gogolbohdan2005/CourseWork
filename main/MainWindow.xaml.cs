@@ -20,7 +20,7 @@ namespace main
     {
         public MainWindow()
         {
-            // CHANGE HERE
+            // CHANGE HERE SOME HERE
             InitializeComponent();
         }
 
